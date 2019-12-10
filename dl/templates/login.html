@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block login %}
+    <form action="{% url 'dl:check_account'%}" method="POST">
+    {% csrf_token %}
+      <div class="form-group">
+        <label>Login:</label>
+        <input name="enter_login" type="text" class="form-control" id="enter_login" placeholder="login...">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input name="enter_pass" type="password" class="form-control" id="enter_pass" placeholder="password...">
+      </div>
+        {% if login_error %}
+            <label style="color: red">{{ login_error }}</label>
+        {% endif %}
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      </div>
+    <button type="submit" class="btn btn-outline-dark">Log In</button>
+    </form>
+{% endblock %}
+{# Load the tag library #}
